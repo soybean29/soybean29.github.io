@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>財政破綻・ハイパーインフレは「ありえない」のか――信用とは何か</title>
+<meta name="description" content="財政破綻やハイパーインフレは日本では起きないのか。戦後日本・アルゼンチン・ドイツの事例から、信用の棄損が国民生活を壊滅させるメカニズムを解説します。">
+<meta name="keywords" content="財政破綻 ハイパーインフレ 日本 戦後 信用 預金封鎖 三橋貴明 財政ファイナンス 国債">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-light: #444;
+    --ink-muted: #888;
+    --paper: #f7f4ef;
+    --paper-dark: #ede9e2;
+    --accent: #8b1a1a;
+    --rule: #c8bfb0;
+    --max: 720px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    line-height: 1.9;
+    min-height: 100vh;
+  }
+
+  .site-header {
+    border-bottom: 2px solid var(--ink);
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    flex-wrap: wrap;
+  }
+  .breadcrumb a {
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb-sep { color: var(--rule); }
+  .breadcrumb-current { color: var(--ink-light); }
+
+  .hero {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 5rem 2rem 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .hero-kicker {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    color: var(--ink-light);
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 2rem 0;
+  }
+
+  /* TOC */
+  .toc {
+    max-width: var(--max);
+    margin: 0 auto 1rem;
+    padding: 0 2rem;
+  }
+
+  .toc-inner {
+    background: var(--paper-dark);
+    border: 1px solid var(--rule);
+    padding: 1.4rem 1.8rem;
+  }
+
+  .toc-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .toc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .toc-list a {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .toc-list a:hover { text-decoration: underline; }
+
+  .toc-num {
+    font-size: 0.7rem;
+    color: var(--ink-muted);
+    margin-right: 0.6rem;
+  }
+
+  /* Article */
+  .article {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 2rem 6rem;
+  }
+
+  .article p {
+    margin-bottom: 1.6rem;
+    color: var(--ink-light);
+  }
+
+  .article strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .article h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 4rem 0 1.2rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--ink);
+    color: var(--ink);
+    scroll-margin-top: 5rem;
+  }
+
+  /* Pullquote */
+  .pullquote {
+    margin: 2.5rem 0;
+    padding: 1.5rem 2rem;
+    background: var(--paper-dark);
+    border-left: 4px solid var(--accent);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* Warning */
+  .warning-box {
+    margin: 2rem 0;
+    padding: 1.4rem 1.8rem;
+    border: 2px solid var(--accent);
+    background: #fdf5f5;
+  }
+
+  .warning-label {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .warning-box p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--ink-light);
+  }
+
+  /* Case study */
+  .case-card {
+    margin: 2.5rem 0;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+
+  .case-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1rem 1.4rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .case-label {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    background: var(--paper-dark);
+    padding: 0.1rem 0.5rem;
+    white-space: nowrap;
+  }
+
+  .case-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+  .case-body {
+    padding: 1.6rem;
+  }
+
+  .case-body p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .case-body p:last-child { margin-bottom: 0; }
+
+  .case-fact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin: 1.2rem 0;
+  }
+
+  .fact-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.8rem;
+    align-items: start;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.9rem;
+  }
+
+  .fact-item:last-child { border-bottom: none; }
+
+  .fact-label {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--paper);
+    background: var(--accent);
+    padding: 0.15rem 0.5rem;
+    white-space: nowrap;
+    margin-top: 0.2rem;
+  }
+
+  .fact-value {
+    color: var(--ink-light);
+    line-height: 1.7;
+  }
+
+  /* Japan special */
+  .japan-card {
+    margin: 2.5rem 0;
+    border: 2px solid var(--ink);
+    overflow: hidden;
+  }
+
+  .japan-header {
+    background: var(--accent);
+    color: var(--paper);
+    padding: 1rem 1.4rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .japan-header .case-label {
+    background: rgba(255,255,255,0.15);
+    color: var(--paper);
+  }
+
+  /* Similarity box */
+  .similarity-box {
+    margin: 2rem 0;
+    padding: 1.4rem 1.8rem;
+    background: var(--paper-dark);
+    border-top: 3px solid var(--ink);
+  }
+
+  .similarity-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 1rem;
+  }
+
+  .similarity-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .similarity-list li {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.8rem;
+    align-items: center;
+    font-size: 0.88rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .similarity-list li:last-child { border-bottom: none; }
+
+  .sim-then {
+    color: var(--ink-muted);
+    font-size: 0.85rem;
+  }
+
+  .sim-arrow {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .sim-now {
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-align: right;
+  }
+
+  /* Daily life impact */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .impact-item {
+    padding: 1.2rem;
+    background: var(--paper-dark);
+    border: 1px solid var(--rule);
+  }
+
+  .impact-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .impact-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+
+  .impact-desc {
+    font-size: 0.82rem;
+    color: var(--ink-light);
+    line-height: 1.7;
+  }
+
+  /* Counter argument */
+  .counter-box {
+    margin: 2rem 0;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+
+  .counter-q {
+    background: var(--paper-dark);
+    padding: 0.9rem 1.4rem;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    border-left: 4px solid var(--ink-muted);
+  }
+
+  .counter-q::before {
+    content: '反論：';
+    color: var(--ink-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .counter-a {
+    padding: 1rem 1.4rem;
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    border-left: 4px solid var(--accent);
+    line-height: 1.8;
+  }
+
+  .counter-a::before {
+    content: '答え：';
+    color: var(--accent);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  /* Back link */
+  .back-link-wrap { margin: 3rem 0 1rem; }
+
+  .back-link {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .back-link:hover { border-bottom-color: var(--accent); }
+
+  .footnote {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .site-header { padding: 1rem; }
+    .hero, .article, .toc { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .impact-grid { grid-template-columns: 1fr; }
+    .similarity-list li { grid-template-columns: 1fr; gap: 0.2rem; }
+    .sim-now { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="breadcrumb">
+    <a href="../index.html">なぜ誰も言わないのか</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="index.html">三橋貴明の誤謬はなぜ広まり続けるのか</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">財政破綻・ハイパーインフレは「ありえない」のか</span>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="hero-kicker">リスクの実態</div>
+    <h1 class="hero-title">財政破綻・ハイパーインフレは<br>「ありえない」のか</h1>
+    <div class="hero-subtitle">信用とは何か、それが失われるとき何が起きるのか</div>
+    <hr class="hero-rule">
+    <p style="color:var(--ink-light);font-size:0.95rem;">「デフレなんだからインフレなんて来るはずがない」。そう言い切る人は多い。しかし歴史は別のことを語っている。そして日本でも、実際に起きたことがある。</p>
+  </div>
+
+  <div class="toc">
+    <div class="toc-inner">
+      <div class="toc-title">目次</div>
+      <ul class="toc-list">
+        <li><a href="#credit"><span class="toc-num">一</span>信用とは何か――目に見えないが全てを支えるもの</a></li>
+        <li><a href="#sudden"><span class="toc-num">二</span>なぜ「突然」起きるのか</a></li>
+        <li><a href="#japan"><span class="toc-num">三</span>日本でも起きた――戦後ハイパーインフレ</a></li>
+        <li><a href="#argentina"><span class="toc-num">四</span>アルゼンチン――預金が一夜にして消えた</a></li>
+        <li><a href="#germany"><span class="toc-num">五</span>ドイツ――給料を受け取った瞬間に走った人々</a></li>
+        <li><a href="#life"><span class="toc-num">六</span>あなたの日常生活に何が起きるか</a></li>
+        <li><a href="#counter"><span class="toc-num">七</span>「日本は違う」という反論に答える</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <article class="article">
+
+    <h2 id="credit">一：信用とは何か――目に見えないが全てを支えるもの</h2>
+
+    <p>あなたの財布に一万円札が入っているとする。それは紙だ。印刷されたインクと紙の原価は数十円に過ぎない。</p>
+
+    <p>ではなぜ、その紙で食料が買えるのか。</p>
+
+    <div class="pullquote">
+      売り手が「この紙には一万円の価値がある」と信じているからだ。そしてその売り手も、受け取った紙で別のものが買えると信じている。この連鎖した信頼の総体が「通貨への信用」だ。
+    </div>
+
+    <p>信用は目に見えない。測ることも難しい。しかしそれが消えた瞬間、一万円札は本当にただの紙になる。</p>
+
+    <p>老舗の料亭を想像してほしい。長年の信頼で予約が埋まり、食材業者も掛け払いで応じてくれる。しかしある日、食中毒のニュースが流れた。予約キャンセルが殺到し、業者も現金払いを要求し始める。信用は長年かけて築かれるが、<strong>失われるのは一瞬だ。</strong>そして一度失われた信用は、容易には戻らない。通貨も同じ構造だ。</p>
+
+    <h2 id="sudden">二：なぜ「突然」起きるのか</h2>
+
+    <p>「デフレが続いているのだから、急にインフレなんて来るはずがない」という意見がある。これは一見もっともらしい。しかし根本的な誤解がある。</p>
+
+    <p>通常のインフレは需要と供給のバランスで緩やかに動く。しかし信用棄損によるインフレは全く別のメカニズムだ。</p>
+
+    <div class="warning-box">
+      <div class="warning-label">重要な区別</div>
+      <p>通常のインフレ：需要増加・供給不足が原因。緩やかに進む。<br>信用崩壊型インフレ：「この通貨は信用できない」という認識の連鎖が原因。<strong>数日から数週間で爆発的に進む。</strong></p>
+    </div>
+
+    <p>銀行の取り付け騒ぎを思い出してほしい。「あの銀行が危ない」という噂が広まると、預金者が一斉に引き出しに走る。健全だった銀行でも、全員が同時に引き出せば破綻する。信用崩壊はこの連鎖反応だ。</p>
+
+    <p>円への信用が崩れ始めたとき、「円を持ち続けるより物やドルに換えた方がいい」という判断が連鎖する。その連鎖が加速すると、誰も止められなくなる。<strong>デフレだった昨日と、インフレが爆発する今日の間に、論理的な助走期間はない。</strong></p>
+
+    <h2 id="japan">三：日本でも起きた――戦後ハイパーインフレ</h2>
+
+    <div class="japan-card">
+      <div class="japan-header">
+        <span class="case-label">事例 日本</span>
+        <span class="case-title">1945〜1949年：戦後ハイパーインフレ</span>
+      </div>
+      <div class="case-body">
+        <p>「日本では起きない」と言う人に、まず問いたい。<strong>日本で実際に起きたことがある。</strong></p>
+
+        <div class="case-fact">
+          <div class="fact-item">
+            <span class="fact-label">規模</span>
+            <span class="fact-value">終戦から約4年で物価が約100倍に上昇。1945年を1とすると1949年には物価指数が約100に達した。</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">原因</span>
+            <span class="fact-value">戦費調達のため日銀が国債を大量引き受け（財政ファイナンス）。敗戦で生産能力が壊滅し、通貨だけが膨張した。</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">国民生活</span>
+            <span class="fact-value">給料が翌週には半分の価値になる。闇市でしか食料が手に入らない。都市部では配給だけでは生きられず、農村へ「買い出し」に行く人が続出した。</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">預金封鎖</span>
+            <span class="fact-value">1946年、政府は突然「預金封鎖」を実施。銀行口座から引き出せる金額を厳しく制限した。一夜にして国民の預金は事実上凍結された。</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">新円切替</span>
+            <span class="fact-value">旧円を新円に強制交換。交換限度額を超えた旧円は無効とされ、多くの国民の貯蓄が実質的に没収された。</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">収束の方法</span>
+            <span class="fact-value">ドッジラインと呼ばれる厳しい緊縮財政を強制実施。財政規律の回復なしにはインフレは止まらなかった。</span>
+          </div>
+        </div>
+
+        <div class="similarity-box">
+          <div class="similarity-title">当時と現在の構造的類似点</div>
+          <ul class="similarity-list">
+            <li>
+              <span class="sim-then">日銀が戦費調達のため国債を直接引き受け</span>
+              <span class="sim-arrow">→</span>
+              <span class="sim-now">日銀が異次元緩和で国債を大量購入</span>
+            </li>
+            <li>
+              <span class="sim-then">財政規律の喪失</span>
+              <span class="sim-arrow">→</span>
+              <span class="sim-now">GDPの2倍を超える政府債務</span>
+            </li>
+            <li>
+              <span class="sim-then">「戦争に勝つためだから問題ない」</span>
+              <span class="sim-arrow">→</span>
+              <span class="sim-now">「自国通貨建てだから破綻しない」</span>
+            </li>
+          </ul>
+        </div>
+
+        <p style="font-size:0.9rem;color:var(--ink-light);">当時の日本人も、まさか預金が封鎖されるとは思っていなかった。「ありえない」と思っていたことが、現実になった。</p>
+      </div>
+    </div>
+
+    <h2 id="argentina">四：アルゼンチン――預金が一夜にして消えた</h2>
+
+    <div class="case-card">
+      <div class="case-header">
+        <span class="case-label">事例 アルゼンチン</span>
+        <span class="case-title">2001年：コラリート（預金封鎖）</span>
+      </div>
+      <div class="case-body">
+        <p>アルゼンチンはかつて南米で最も豊かな国の一つだった。1990年代、積極的な財政政策と対外債務の拡大を続けた結果、2001年に危機が爆発した。</p>
+
+        <div class="case-fact">
+          <div class="fact-item">
+            <span class="fact-label">預金封鎖</span>
+            <span class="fact-value">2001年12月、政府は突然「コラリート」を発動。銀行口座から引き出せるのは週150ペソのみに制限された。</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">通貨切り下げ</span>
+            <span class="fact-value">ドルとの固定レートが崩壊し、ペソは数ヶ月で約70%下落。ドル建ての借金を持つ国民・企業は一夜にして債務が3倍以上になった。</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">中産階級の崩壊</span>
+            <span class="fact-value">銀行に預けていた老後の蓄えが実質的に失われた。中産階級の多くが一夜にして貧困層に転落した。</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">社会混乱</span>
+            <span class="fact-value">スーパーへの略奪が相次ぎ、大統領が2週間で5人交代した。「豊かだった国」が機能不全に陥るまで、さほど時間はかからなかった。</span>
+          </div>
+        </div>
+
+        <p style="font-size:0.9rem;color:var(--ink-light);">アルゼンチン国民の多くは、危機の直前まで「まさか自分の預金が封鎖されるとは」と思っていた。信用崩壊は予告なく来る。</p>
+      </div>
+    </div>
+
+    <h2 id="germany">五：ドイツ――給料を受け取った瞬間に走った人々</h2>
+
+    <div class="case-card">
+      <div class="case-header">
+        <span class="case-label">事例 ドイツ</span>
+        <span class="case-title">1921〜1923年：ヴァイマル共和国のハイパーインフレ</span>
+      </div>
+      <div class="case-body">
+        <p>第一次世界大戦後のドイツは、賠償金支払いのために紙幣を刷り続けた。その結果は人類史上最悪レベルのインフレだった。</p>
+
+        <div class="case-fact">
+          <div class="fact-item">
+            <span class="fact-label">規模</span>
+            <span class="fact-value">1919年から1923年の間に物価は約1兆倍になった。1923年11月には1ドル＝4兆2000億マルクに達した。</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">日常生活</span>
+            <span class="fact-value">給料を受け取った瞬間、工場を飛び出してパン屋に走った。昼休みに受け取った給料は、夕方には半分の価値になっていたからだ。</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">貯蓄の消滅</span>
+            <span class="fact-value">一生かけて貯めた貯蓄が、パン一斤も買えない価値になった。老後の備えを持っていた中産階級が根こそぎ破壊された。</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">社会への影響</span>
+            <span class="fact-value">中産階級の没落が社会の不安定化を招き、やがてナチスの台頭を許す土壌となった。経済崩壊は単なる経済問題で終わらない。</span>
+          </div>
+        </div>
+
+        <p style="font-size:0.9rem;color:var(--ink-light);">「給料を受け取った瞬間に走る」。これが信用崩壊後の日常だ。デフレだった昨日とは、全く異なる世界が突然始まる。</p>
+      </div>
+    </div>
+
+    <h2 id="life">六：あなたの日常生活に何が起きるか</h2>
+
+    <p>歴史の話は遠く感じるかもしれない。では現代の日本で同様のことが起きた場合、あなたの日常はどう変わるか。</p>
+
+    <div class="impact-grid">
+      <div class="impact-item">
+        <div class="impact-icon">🏦</div>
+        <div class="impact-title">預金・貯蓄</div>
+        <div class="impact-desc">銀行口座の引き出しが制限される。老後のために積み上げた貯蓄の実質価値が急速に失われる。</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-icon">🛒</div>
+        <div class="impact-title">食料・日用品</div>
+        <div class="impact-desc">輸入物価が急騰し、食料品・エネルギーが数倍の価格になる。給料が同じでも買えるものが激減する。</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-icon">🏠</div>
+        <div class="impact-title">住宅ローン</div>
+        <div class="impact-desc">変動金利が急上昇し、月々の返済額が跳ね上がる。固定金利でも借り換えが困難になる。</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-icon">💼</div>
+        <div class="impact-title">雇用・給料</div>
+        <div class="impact-desc">企業の資金調達コストが急増し、倒産・リストラが相次ぐ。給料は上がらないのに物価だけが上がる状態が続く。</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-icon">🏥</div>
+        <div class="impact-title">社会保障</div>
+        <div class="impact-desc">財政悪化で年金・医療・介護の給付が削減される。最も打撃を受けるのは社会保障に依存する高齢者・低所得者だ。</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-icon">📉</div>
+        <div class="impact-title">資産全般</div>
+        <div class="impact-desc">円建ての資産（預金・国債・保険）の実質価値が急落する。外貨資産を持たない大多数の国民が直撃される。</div>
+      </div>
+    </div>
+
+    <div class="warning-box" style="margin-top:2rem;">
+      <div class="warning-label">最も重要な点</div>
+      <p>これらは「もしかしたら起きるかもしれない」話ではない。過去に実際に起きたことであり、現在も世界のどこかで進行中のことだ。そして<strong>必ず事前に警告があるわけではない。</strong></p>
+    </div>
+
+    <h2 id="counter">七：「日本は違う」という反論に答える</h2>
+
+    <div class="counter-box">
+      <div class="counter-q">「日本国債は国内で消化されているから大丈夫だ」</div>
+      <div class="counter-a">国内消化は確かに外国からの急激な売り圧力を緩和する。しかし国内投資家も信用を失えば売る。日銀が買い支えを続ければ財政ファイナンスが加速し、信用はさらに低下する。国内消化は「絶対安全」の保証ではなく、崩壊を遅らせる要因に過ぎない。</div>
+    </div>
+
+    <div class="counter-box">
+      <div class="counter-q">「日本はデフレだったのだから、急にインフレにはならない」</div>
+      <div class="counter-a">通常の需給インフレとは異なり、信用崩壊型のインフレは「突然」来る。戦後日本も、アルゼンチンも、ドイツも、崩壊直前まで「まさかここまで」という状態だった。デフレからの脱却を目指してきた日本は、むしろインフレへの転換点に近い位置にある。</div>
+    </div>
+
+    <div class="counter-box">
+      <div class="counter-q">「政府が破綻しても日銀が紙幣を刷れば大丈夫だ」</div>
+      <div class="counter-a">これがまさに問題の核心だ。「紙幣を刷れば解決する」という発想が、信用を破壊するメカニズムそのものだ。戦後日本もヴァイマルドイツも、紙幣を刷り続けた結果としてハイパーインフレが起きた。解決策が原因になる。</div>
+    </div>
+
+    <div class="counter-box">
+      <div class="counter-q">「今まで大丈夫だったのだから、これからも大丈夫だ」</div>
+      <div class="counter-a">信用はある臨界点を超えると急速に崩壊する。「今まで大丈夫だった」という事実は、「これからも大丈夫」の根拠にならない。老舗料亭が長年信頼されていたことは、食中毒が起きた後の信用回復を保証しない。</div>
+    </div>
+
+    <div class="pullquote">
+      リスクは、それが顕在化する前に手を打たなければ意味がない。顕在化した後では遅い。これが財政規律の問題を「将来世代の問題」として先送りできない理由だ。
+    </div>
+
+    <div class="back-link-wrap">
+      <a href="index.html" class="back-link">← メイン記事「三橋貴明の誤謬はなぜ広まり続けるのか」に戻る</a>
+    </div>
+
+    <div class="footnote">
+      この記事は歴史的事実と経済の一般的なメカニズムに基づいた解説です。将来の経済動向を予測するものではありません。日本の財政状況については様々な見方があり、この記事はリスクの存在を示すことを目的としています。
+    </div>
+
+  </article>
+</main>
+
+</body>
+</html>

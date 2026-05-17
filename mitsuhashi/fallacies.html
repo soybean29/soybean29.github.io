@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>言説を操る「論法」入門――三橋貴明の誤謬はなぜ広まり続けるのか</title>
+<meta name="description" content="三橋貴明が使うモット＆ベイリー、ギッシュ論法など誤謬の手口を身近な例とともに解説。なぜ反証されにくく、主流派経済学者が沈黙するのかを明らかにします。">
+<meta name="keywords" content="三橋貴明 嘘 誤謬 おかしい 批判 論法 モットアンドベイリー ギッシュ論法 チェリーピッキング 財務省 積極財政">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-light: #444;
+    --ink-muted: #888;
+    --paper: #f7f4ef;
+    --paper-dark: #ede9e2;
+    --accent: #8b1a1a;
+    --accent-light: #c0392b;
+    --rule: #c8bfb0;
+    --max: 720px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    line-height: 1.9;
+    min-height: 100vh;
+  }
+
+  .site-header {
+    border-bottom: 2px solid var(--ink);
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    flex-wrap: wrap;
+  }
+  .breadcrumb a {
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb-sep { color: var(--rule); }
+  .breadcrumb-current { color: var(--ink-light); }
+
+  .hero {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 5rem 2rem 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .hero-kicker {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    color: var(--ink-light);
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 2rem 0;
+  }
+
+  /* TOC */
+  .toc {
+    max-width: var(--max);
+    margin: 0 auto 1rem;
+    padding: 0 2rem;
+  }
+
+  .toc-inner {
+    background: var(--paper-dark);
+    border: 1px solid var(--rule);
+    padding: 1.4rem 1.8rem;
+  }
+
+  .toc-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .toc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .toc-list a {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .toc-list a:hover { text-decoration: underline; }
+
+  .toc-num {
+    font-size: 0.7rem;
+    color: var(--ink-muted);
+    min-width: 1.5rem;
+  }
+
+  /* Article */
+  .article {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 2rem 6rem;
+  }
+
+  .article p {
+    margin-bottom: 1.6rem;
+    color: var(--ink-light);
+  }
+
+  .article strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .article h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 4rem 0 1.2rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--ink);
+    color: var(--ink);
+    scroll-margin-top: 5rem;
+  }
+
+  /* Fallacy card */
+  .fallacy-card {
+    margin: 2rem 0;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+
+  .fallacy-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.8rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .fallacy-num {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    background: var(--paper-dark);
+    padding: 0.1rem 0.5rem;
+  }
+
+  .fallacy-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  .fallacy-body {
+    padding: 1.4rem 1.6rem;
+  }
+
+  .fallacy-body p {
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .fallacy-body p:last-child { margin-bottom: 0; }
+
+  /* Sub sections inside card */
+  .subsection {
+    margin: 1.2rem 0;
+  }
+
+  .subsection-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .example-box {
+    background: var(--paper-dark);
+    border-left: 3px solid var(--rule);
+    padding: 0.9rem 1.2rem;
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    line-height: 1.8;
+  }
+
+  .mitsuhashi-box {
+    background: #fdf5f5;
+    border-left: 3px solid var(--accent);
+    padding: 0.9rem 1.2rem;
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    line-height: 1.8;
+  }
+
+  .tip-box {
+    margin-top: 1.2rem;
+    padding: 0.8rem 1.2rem;
+    background: var(--paper-dark);
+    border-top: 2px solid var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.85rem;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  .tip-box::before {
+    content: '▶ 見抜くポイント：';
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  /* Special: Gish */
+  .gish-card {
+    margin: 2rem 0;
+    border: 2px solid var(--ink);
+    overflow: hidden;
+  }
+
+  .gish-header {
+    background: var(--accent);
+    color: var(--paper);
+    padding: 1rem 1.4rem;
+  }
+
+  .gish-header .fallacy-num {
+    background: rgba(255,255,255,0.15);
+    color: var(--paper);
+  }
+
+  .gish-cost {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .cost-item {
+    padding: 1rem;
+    background: var(--paper-dark);
+    border: 1px solid var(--rule);
+  }
+
+  .cost-label {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .cost-value {
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* Summary */
+  .summary-box {
+    margin: 3rem 0;
+    padding: 2rem;
+    border: 2px solid var(--ink);
+    background: var(--paper-dark);
+  }
+
+  .summary-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 1.2rem;
+  }
+
+  .summary-list {
+    list-style: none;
+    counter-reset: summary;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .summary-list li {
+    counter-increment: summary;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: start;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.92rem;
+  }
+
+  .summary-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .summary-list li::before {
+    content: counter(summary);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--paper);
+    background: var(--accent);
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .summary-q {
+    color: var(--accent);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .summary-a {
+    color: var(--ink-muted);
+    font-size: 0.85rem;
+  }
+
+  /* Back link */
+  .back-link-wrap {
+    margin: 3rem 0 1rem;
+  }
+
+  .back-link {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .back-link:hover { border-bottom-color: var(--accent); }
+
+  .footnote {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .site-header { padding: 1rem; }
+    .hero, .article, .toc { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .gish-cost { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="breadcrumb">
+    <a href="../index.html">なぜ誰も言わないのか</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="index.html">三橋貴明の誤謬はなぜ広まり続けるのか</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">論法入門</span>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="hero-kicker">補足資料</div>
+    <h1 class="hero-title">言説を操る「論法」入門</h1>
+    <div class="hero-subtitle">三橋貴明の手口を解剖する</div>
+    <hr class="hero-rule">
+    <p style="color:var(--ink-light);font-size:0.95rem;">「なんとなく説得力がある気がするが、どこかおかしい」。そう感じながらも、何がおかしいのか言葉にできない。論理を操る手口には名前がある。名前を知ることで、霧の正体が見えてくる。</p>
+  </div>
+
+  <div class="toc">
+    <div class="toc-inner">
+      <div class="toc-title">目次</div>
+      <ul class="toc-list">
+        <li><a href="#intuition"><span class="toc-num">序</span>なぜ騙されないのか――三つの直感</a></li>
+        <li><a href="#mott"><span class="toc-num">1</span>モット＆ベイリー論法</a></li>
+        <li><a href="#cherry"><span class="toc-num">2</span>チェリーピッキング</a></li>
+        <li><a href="#straw"><span class="toc-num">3</span>藁人形論法</a></li>
+        <li><a href="#unfalsifiable"><span class="toc-num">4</span>反証不可能な構造</a></li>
+        <li><a href="#framing"><span class="toc-num">5</span>感情的フレーミング</a></li>
+        <li><a href="#partial"><span class="toc-num">6</span>部分的真実による誤誘導</a></li>
+        <li><a href="#authority"><span class="toc-num">7</span>権威への不正な訴え</a></li>
+        <li><a href="#gish"><span class="toc-num">8</span>ギッシュ論法――なぜ間違いだらけでも騙されるのか</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <article class="article">
+
+    <h2 id="intuition">序：そもそもなぜ騙されないのか</h2>
+
+    <p>論法の解説に入る前に、一つ問いたい。三橋氏の言説を聞いて「なんとなくおかしい」と感じた人は、なぜそう感じられたのか。経済学の専門知識があったからではない。多くの場合、以下のような直感が働いていたはずだ。</p>
+
+    <div class="fallacy-card">
+      <div class="fallacy-body">
+        <div class="subsection">
+          <div class="subsection-title">直感その一</div>
+          <div class="example-box">「おいしい話はない」―― あらゆる政策にはコストが存在する。コストを示さない主張は、その時点で疑うべきだ。経済学では「タダのランチはない（There is no such thing as a free lunch）」と表現する。</div>
+        </div>
+        <div class="subsection" style="margin-top:1rem;">
+          <div class="subsection-title">直感その二</div>
+          <div class="example-box">「物事には必ずトレードオフがある」―― 何かを得れば何かを失う。財政出動で得るものがあれば、必ず失うものがある。副作用を一切示さない主張は、議論の半分しか見せていない。</div>
+        </div>
+        <div class="subsection" style="margin-top:1rem;">
+          <div class="subsection-title">直感その三</div>
+          <div class="example-box">「単線の論理を信じない」―― 現実の経済は「AをすればBになる」という一本の矢印だけで動いていない。フィードバックループ、副作用、外部要因が必ず存在する。</div>
+        </div>
+        <p style="margin-top:1.2rem;font-size:0.9rem;">この三つの直感は、高度な経済知識がなくても持てる、最も信頼できる羅針盤だ。論法の名前を知ることは、その直感をより鋭くするための道具に過ぎない。</p>
+      </div>
+    </div>
+
+    <h2 id="mott">1. モット＆ベイリー論法</h2>
+
+    <div class="fallacy-card">
+      <div class="fallacy-header">
+        <span class="fallacy-num">論法 01</span>
+        <span class="fallacy-title">モット＆ベイリー論法</span>
+      </div>
+      <div class="fallacy-body">
+        <p>中世ヨーロッパの城塞構造に由来する。<strong>「モット（本丸）」と「ベイリー（外郭）」を使い分ける論法だ。</strong>過激な主張で注目を集め、批判されると穏当な主張に逃げ込み、批判をかわすとまた過激な主張に戻る。</p>
+        <div class="subsection">
+          <div class="subsection-title">身近な例</div>
+          <div class="example-box">「この成分はガンを治す！」→ 批判されると「免疫力の向上が健康に寄与すると申し上げました」→ 売り場では引き続き「ガンに効く」雰囲気を醸し出す。</div>
+        </div>
+        <div class="subsection">
+          <div class="subsection-title">三橋の例</div>
+          <div class="mitsuhashi-box">
+            <strong>ベイリー：</strong>「財政出動をいくらでもできる。財政制約はない」<br>
+            <strong>モットA：</strong>「自国通貨建て国債は技術的にはデフォルトしない」（←これ自体も欺瞞。通貨価値の暴落・ハイパーインフレ・信用棄損を無視している）<br>
+            <strong>モットB：</strong>「経済成長が大切だと言っているだけです」<br>
+            <strong>支持者の前では：</strong>再び「財務省の嘘に騙されるな」
+          </div>
+        </div>
+        <div class="tip-box">「それは結局どちらの主張なのか」と問い続けること。穏当な主張なら誰も反対しない。過激な主張なら証拠を求める。この二つを混同させるのがこの論法の核心だ。</div>
+      </div>
+    </div>
+
+    <h2 id="cherry">2. チェリーピッキング</h2>
+
+    <div class="fallacy-card">
+      <div class="fallacy-header">
+        <span class="fallacy-num">論法 02</span>
+        <span class="fallacy-title">チェリーピッキング</span>
+      </div>
+      <div class="fallacy-body">
+        <p>桜桃摘みの名の通り、<strong>都合のいいデータだけを選んで提示する。</strong>反証となるデータには触れない、あるいは存在しないかのように扱う。</p>
+        <div class="subsection">
+          <div class="subsection-title">身近な例</div>
+          <div class="example-box">「この投資手法で利益を出した事例をご覧ください」と成功例だけを10件並べる。損失を出した事例が100件あることには触れない。</div>
+        </div>
+        <div class="subsection">
+          <div class="subsection-title">三橋の例</div>
+          <div class="mitsuhashi-box">財政出動と経済成長が重なった時期のグラフだけを提示。同じ政策で失敗した国や時期のデータは「条件が違う」として除外。反証となる経済学者の研究は「御用学者」と切り捨てる。</div>
+        </div>
+        <div class="tip-box">「反対の事例はないのか」と問うこと。都合のいいデータだけ並べることは、嘘をつかずに嘘をつく技術だ。</div>
+      </div>
+    </div>
+
+    <h2 id="straw">3. 藁人形論法</h2>
+
+    <div class="fallacy-card">
+      <div class="fallacy-header">
+        <span class="fallacy-num">論法 03</span>
+        <span class="fallacy-title">藁人形論法</span>
+      </div>
+      <div class="fallacy-body">
+        <p><strong>相手の主張を極端・単純・馬鹿げた形に歪めて攻撃する。</strong>本来の主張には触れていないのに、反論したように見せる。</p>
+        <div class="subsection">
+          <div class="subsection-title">身近な例</div>
+          <div class="example-box">A：「食費を少し節約した方がいいかもしれない」<br>B：「食べるなということですか？餓死しろということですか？」<br>Bは実際にはAの主張に反論していない。</div>
+        </div>
+        <div class="subsection">
+          <div class="subsection-title">三橋の例</div>
+          <div class="mitsuhashi-box">財政規律を主張する人を「デフレを望む緊縮バカ」と呼ぶ。「財政再建派は国民を苦しめたいのか」という文脈で語る。</div>
+        </div>
+        <div class="tip-box">「批判されている主張は、批判された相手が本当に言ったことか」を確認すること。</div>
+      </div>
+    </div>
+
+    <h2 id="unfalsifiable">4. 反証不可能な構造</h2>
+
+    <div class="fallacy-card">
+      <div class="fallacy-header">
+        <span class="fallacy-num">論法 04</span>
+        <span class="fallacy-title">反証不可能な構造</span>
+      </div>
+      <div class="fallacy-body">
+        <p><strong>どんな結果が出ても自説が正しいことになる論理構造。</strong>科学的な理論は「こういう結果が出たら間違いだ」という条件を持つ。それがない主張は理論ではなく信仰に近い。</p>
+        <div class="subsection">
+          <div class="subsection-title">身近な例</div>
+          <div class="example-box">占い師：「今年はいいことがある」→ いいことがあれば「当たった」→ なければ「あなたの行動が足りなかった」。どちらに転んでも占いは正しかったことになる。</div>
+        </div>
+        <div class="subsection">
+          <div class="subsection-title">三橋の例</div>
+          <div class="mitsuhashi-box">「財政出動すれば経済は成長する」→ 成長すれば「積極財政が正しかった証拠」→ 成長しなければ「財務省が妨害したからだ」「財政出動が足りなかった」。アベノミクスが期待通りでなくても、インフレが始まっても、理論は一切修正されない。</div>
+        </div>
+        <div class="tip-box">「どういう結果が出たらその主張は間違いだと認めるのか」と問うこと。この問いに答えられない主張は、理論ではない。</div>
+      </div>
+    </div>
+
+    <h2 id="framing">5. 感情的フレーミング</h2>
+
+    <div class="fallacy-card">
+      <div class="fallacy-header">
+        <span class="fallacy-num">論法 05</span>
+        <span class="fallacy-title">感情的フレーミング</span>
+      </div>
+      <div class="fallacy-body">
+        <p><strong>論理ではなく感情に訴えることで、批判的思考を停止させる。</strong>「善対悪」という勧善懲悪の物語に落とし込むことで、複雑な問題をシンプルに見せる。</p>
+        <div class="subsection">
+          <div class="subsection-title">身近な例</div>
+          <div class="example-box">複雑な政策論争を「既得権益対普通の市民」という構図に単純化する。具体的な数字や根拠より、感情的な言葉を多用する。</div>
+        </div>
+        <div class="subsection">
+          <div class="subsection-title">三橋の例</div>
+          <div class="mitsuhashi-box">「財務省の犬」「売国奴」「緊縮バカ」という侮蔑的なレッテル。「国民を苦しめる財務省」という悪役の設定。支持者を「真実に気づいた覚醒した人々」として位置づける。この構図に乗ることで、支持者は「自分は正しい側にいる」という快感を得る。</div>
+        </div>
+        <div class="tip-box">感情が動いたとき、一度立ち止まること。「腹落ち感」は正しさの証拠ではない。</div>
+      </div>
+    </div>
+
+    <h2 id="partial">6. 部分的真実による誤誘導</h2>
+
+    <div class="fallacy-card">
+      <div class="fallacy-header">
+        <span class="fallacy-num">論法 06</span>
+        <span class="fallacy-title">部分的真実による誤誘導</span>
+      </div>
+      <div class="fallacy-body">
+        <p>個々の事実としては正しいことを並べながら、<strong>重要な前提やコストを省略することで、誤った結論へ誘導する。</strong>チェリーピッキングが「不都合なデータを隠す」のに対し、この論法は「各ステップは正しいが、つなげると誤った結論に至る」点が異なる。</p>
+        <div class="subsection">
+          <div class="subsection-title">身近な例</div>
+          <div class="example-box">「この薬を飲んだ患者の90%が症状の改善を報告しました」（事実）。しかしプラセボでも85%が改善する疾患だった、という前提が省略されている。各数字は正しいが、「この薬には効果がある」は成立しない。</div>
+        </div>
+        <div class="subsection">
+          <div class="subsection-title">三橋の例</div>
+          <div class="mitsuhashi-box">「政府の負債は国民の資産だ」―― 政府が国債を発行し、日銀が買い取り（財政ファイナンス）、現金が社会に出回る、それが国民の資産になる。各ステップは説明できる。しかし「現金が増えてもインフレで実質価値が目減りすれば豊かにならない」「日銀が無限に買い取れるという前提は成立するのか」「そのコストは何か」が完全に省略されている。</div>
+        </div>
+        <div class="tip-box">「省略されている前提やコストはないか」と問うこと。コストを一切示さない主張は、経済学の詳細を知らなくても疑うべきだ。</div>
+      </div>
+    </div>
+
+    <h2 id="authority">7. 権威への不正な訴え</h2>
+
+    <div class="fallacy-card">
+      <div class="fallacy-header">
+        <span class="fallacy-num">論法 07</span>
+        <span class="fallacy-title">権威への不正な訴え</span>
+      </div>
+      <div class="fallacy-body">
+        <p><strong>証拠の代わりに権威者の名前や肩書きを持ち出して主張を正当化する。</strong>あるいは逆に、反論者の権威を否定することで議論を回避する。</p>
+        <div class="subsection">
+          <div class="subsection-title">身近な例</div>
+          <div class="example-box">「医師の○○先生もこのサプリを推薦しています」（その医師が専門外であっても）。反論する医師には「製薬会社の手先だ」と言う。</div>
+        </div>
+        <div class="subsection">
+          <div class="subsection-title">三橋の例</div>
+          <div class="mitsuhashi-box">経済産業省出身の中野剛志氏との連携を、主張の正当性の根拠として使う。反論する主流派経済学者を「財務省の御用学者」として権威ごと否定する。これにより、反論者は何を言っても「財務省の犬」として処理される。</div>
+        </div>
+        <div class="tip-box">「その人が言っているから正しい」ではなく「その主張の根拠は何か」を問うこと。</div>
+      </div>
+    </div>
+
+    <h2 id="gish">8. ギッシュ論法（Gish Gallop）<br><small style="font-size:0.75em;font-weight:400;">――なぜ間違いだらけなのに騙されるのか</small></h2>
+
+    <div class="gish-card">
+      <div class="gish-header fallacy-header">
+        <span class="fallacy-num">論法 08</span>
+        <span class="fallacy-title">ギッシュ論法（Gish Gallop）</span>
+      </div>
+      <div class="fallacy-body">
+        <p>ここまで読んで、こう思った人もいるかもしれない。「これだけ間違いだらけなら、すぐに見破られるのではないか」</p>
+        <p><strong>実はその逆だ。間違いが多いことは、説得力を下げない。むしろ反論を不可能にする。</strong></p>
+        <p>これをギッシュ論法（Gish Gallop）と呼ぶ。創造論者のデュアン・ギッシュ氏が討論で使ったことに由来する手法で、大量の誤謬を一度に並べることで、反論する側が追いつけなくなる。</p>
+
+        <div class="gish-cost">
+          <div class="cost-item">
+            <div class="cost-label">誤謬を生産するコスト</div>
+            <div class="cost-value">数秒</div>
+          </div>
+          <div class="cost-item">
+            <div class="cost-label">誤謬を反証するコスト</div>
+            <div class="cost-value">数ページ・数時間</div>
+          </div>
+        </div>
+
+        <p>結果として反論側が「言い負けた」ように見える。聴衆は「三橋の方が詳しそうだ」と感じる。討論の場で三橋氏が優勢に見えるのは、主張が正しいからではなく、この構造的非対称性によるものだ。</p>
+
+        <div class="subsection">
+          <div class="subsection-title">主流派経済学者が沈黙する理由</div>
+          <div class="mitsuhashi-box">反証しても、信者には「財務省の犬が書いた記事だ」と処理される。次の誤謬は既に10個出ている。これは<strong>構造的に勝てないゲームだ。</strong>主流派が黙っているのは、正しいから反論できないのではない。割に合わないから参加しないのだ。「主流派は反論できない＝三橋が正しい」は、この構造を理解していない、あるいはそう見せかけるための詭弁だ。</div>
+        </div>
+
+        <div class="tip-box">「反論が少ない＝正しい」は成立しない。反論のコストが高すぎる場合、沈黙は敗北ではなく合理的判断だ。</div>
+      </div>
+    </div>
+
+    <div class="summary-box">
+      <div class="summary-title">まとめ：論法に気づくための五つの問い</div>
+      <ul class="summary-list">
+        <li>
+          <div>
+            <span class="summary-q">コストや副作用が示されているか</span>
+            <span class="summary-a">部分的真実による誤誘導を見抜く</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="summary-q">反対の事例はないのか</span>
+            <span class="summary-a">チェリーピッキングを見抜く</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="summary-q">どういう結果が出たら間違いだと認めるのか</span>
+            <span class="summary-a">反証不可能な構造を見抜く</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="summary-q">今、感情が動いていないか</span>
+            <span class="summary-a">感情的フレーミングを見抜く</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="summary-q">主流派はなぜ黙っているのか</span>
+            <span class="summary-a">沈黙を正しさの証拠にしないこと</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <p style="color:var(--ink-light);font-size:0.95rem;">論理の手口を知ることは、特定の人物を批判するためではない。自分自身の思考を守るためだ。</p>
+
+    <div class="back-link-wrap">
+      <a href="index.html" class="back-link">← メイン記事「三橋貴明の誤謬はなぜ広まり続けるのか」に戻る</a>
+    </div>
+
+    <div class="footnote">
+      この記事は一個人による構造分析です。特定の政治的立場を推奨するものではありません。
+    </div>
+
+  </article>
+</main>
+
+</body>
+</html>
