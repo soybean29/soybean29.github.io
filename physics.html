@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>物理学が陥っている構造——なぜ誰も言わないのか</title>
+<meta name="description" content="相対性理論、量子力学、電磁気学。現代物理学の土台を問い直す。誤謬が誤謬を生む構造と、誰も言わない理由。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-light: #444;
+    --ink-muted: #888;
+    --paper: #f7f4ef;
+    --paper-dark: #ede9e2;
+    --accent: #8b1a1a;
+    --rule: #c8bfb0;
+    --max: 860px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    line-height: 1.9;
+    min-height: 100vh;
+  }
+
+  /* ヘッダー */
+  .site-header {
+    border-bottom: 2px solid var(--ink);
+    padding: 1.2rem 2rem;
+    background: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-name {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .site-tagline {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* パンくず */
+  .breadcrumb {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 1.5rem 2rem 0;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .breadcrumb a {
+    color: var(--ink-muted);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover { color: var(--accent); }
+
+  /* 記事ヘッダー */
+  .article-header {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 4rem 2rem 3rem;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .series-badge {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.2rem 0.7rem;
+  }
+
+  .article-tag {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.7rem;
+    color: var(--ink-muted);
+    border: 1px solid var(--rule);
+    padding: 0.15rem 0.6rem;
+  }
+
+  .article-title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+  }
+
+  .article-title span {
+    color: var(--accent);
+  }
+
+  .article-lead {
+    font-size: 1.05rem;
+    color: var(--ink-light);
+    border-left: 4px solid var(--accent);
+    padding-left: 1.2rem;
+    max-width: 560px;
+    line-height: 1.9;
+  }
+
+  /* 目次 */
+  .toc-wrap {
+    max-width: var(--max);
+    margin: 0 auto 1rem;
+    padding: 0 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .toc {
+    border: 1px solid var(--rule);
+    padding: 1.5rem 1.8rem;
+    background: var(--paper-dark);
+  }
+
+  .toc-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 1rem;
+  }
+
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .toc ol li {
+    counter-increment: toc;
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.85rem;
+  }
+
+  .toc ol li::before {
+    content: counter(toc, decimal-leading-zero);
+    font-size: 0.7rem;
+    color: var(--ink-muted);
+    min-width: 1.5rem;
+  }
+
+  .toc ol li a {
+    color: var(--ink-light);
+    text-decoration: none;
+    line-height: 1.5;
+  }
+
+  .toc ol li a:hover { color: var(--accent); }
+
+  /* 本文 */
+  .article-body {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 2rem 2rem 6rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.35s forwards;
+  }
+
+  .section {
+    margin-bottom: 4rem;
+    padding-top: 1rem;
+  }
+
+  .section-label {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.4;
+  }
+
+  .section p {
+    margin-bottom: 1.4rem;
+    color: var(--ink-light);
+  }
+
+  .section p:last-child { margin-bottom: 0; }
+
+  /* 強調ブロック */
+  .emphasis-block {
+    margin: 2rem 0;
+    padding: 1.4rem 1.8rem;
+    border-left: 4px solid var(--accent);
+    background: var(--paper-dark);
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.9;
+  }
+
+  /* 区切り線 */
+  .section-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 3rem 0;
+  }
+
+  /* 著者注 */
+  .author-note {
+    margin: 2rem 0;
+    padding: 1.2rem 1.5rem;
+    border: 1px dashed var(--rule);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    line-height: 1.8;
+  }
+
+  .author-note-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  /* 締め */
+  .closing {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--ink);
+  }
+
+  .closing p {
+    margin-bottom: 1.4rem;
+    color: var(--ink-light);
+  }
+
+  .closing-final {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ink) !important;
+    margin-top: 2rem;
+  }
+
+  /* ナビゲーション */
+  .article-nav {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 2rem 6rem;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .nav-back {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--rule);
+    padding: 0.6rem 1.2rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .nav-back:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* フッター */
+  .site-footer {
+    border-top: 1px solid var(--rule);
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 700px) {
+    .article-header, .toc-wrap, .article-body, .article-nav { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .article-title { font-size: 1.6rem; }
+    .site-tagline { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../index.html" class="site-name">なぜ誰も言わないのか</a>
+  <span class="site-tagline">見えていない構造を、言葉にする</span>
+</header>
+
+<nav class="breadcrumb">
+  <a href="../index.html">トップ</a>
+  <span>›</span>
+  <span>シリーズ 03</span>
+  <span>›</span>
+  <span>物理学が陥っている構造</span>
+</nav>
+
+<div class="article-header">
+  <div class="article-meta">
+    <span class="series-badge">シリーズ 03</span>
+    <span class="article-tag">物理学・構造分析</span>
+  </div>
+  <h1 class="article-title">物理学が陥っている構造<span>——誰も問わない土台</span></h1>
+  <p class="article-lead">物理学の構造を、一度俯瞰してみたい。計算が合うことと、土台が正しいことは、別の話だ。</p>
+</div>
+
+<div class="toc-wrap">
+  <div class="toc">
+    <div class="toc-title">目次</div>
+    <ol>
+      <li><a href="#intro">現代物理学の二つの柱</a></li>
+      <li><a href="#relativity">相対性理論——光速不変の根拠を問う</a></li>
+      <li><a href="#electromagnetism">電磁気学——循環する土台</a></li>
+      <li><a href="#quantum">量子力学——解釈が乱立する理由</a></li>
+      <li><a href="#structure">誤謬の連鎖——俯瞰</a></li>
+      <li><a href="#closing">だから私が言う</a></li>
+    </ol>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <!-- イントロ -->
+  <div class="section" id="intro">
+    <div class="section-label">はじめに</div>
+    <h2 class="section-title">現代物理学の二つの柱</h2>
+
+    <p>物理学の構造を、一度俯瞰してみたい。</p>
+
+    <p>現代物理学は驚異的な予測精度を持つ。GPSは相対論なしに機能しない。半導体は量子力学なしに設計できない。その意味で、現代物理学は疑いようのない成果を上げてきた。</p>
+
+    <p>しかし成果があることと、土台が正しいことは、別の話だ。</p>
+
+    <p>物理学はいつから、「なぜそうなるのか」を問わなくなったのか。描像を失い、哲学を失い、計算が合うことだけを正しさの根拠とするようになったのか。</p>
+
+    <p>そしてその土台に、誰も確認していない前提が置かれているとしたら。</p>
+
+    <hr class="section-rule">
+
+    <p>ニュートン力学という偉大な柱の上に、古典物理学は完成されたかに見えた。しかし20世紀、その枠組みを根底から超えた二つの理論が現れた。相対性理論と量子力学だ。</p>
+
+    <p>どちらも日常感覚を根底から覆す世界観を持っている。</p>
+
+    <p>相対性理論が言うのはこういうことだ。時間は誰にとっても同じように流れない。高速で移動する人の時間は遅れる。宇宙飛行士が長期ミッションから帰還すると、地上の人間より僅かに若い。これは思考実験ではなく、GPSの補正に実際に使われている計算だ。</p>
+
+    <p>量子力学はさらに奇妙だ。電子は観測するまで「どこにいるか」が確定しない。観測という行為が現実を決定する。粒子は波でもあり、二つの場所に同時に存在できる。アインシュタインはこれを「神はサイコロを振らない」と言って生涯拒否したが、量子力学の予測は実験で繰り返し正しいと証明されてきた。</p>
+
+    <p>私が量子力学の存在を知ったのは、ずいぶん後になってからだ。工学を学び、ニュートン力学と電磁気学で世界を記述していた。それで十分だった。量子力学という学問があることすら知らなかった。</p>
+
+    <p>あるときYouTubeで量子力学の不思議さを語る動画を目にした。そんなバカな話があるかと思った。しかし調べると、それは確立された学問として厳然と存在していた。</p>
+
+    <p>驚愕した。物理学はまだ完成していなかったのか、と。</p>
+
+    <div class="emphasis-block">
+      物理学者たちは「なぜそうなるのか」を説明しない。正確には、説明できない。計算が現実と一致する。それが正しさの唯一の根拠だ。描像がない。直感的な理解がない。数式だけがある。<br><br>
+      これは物理学の深化なのか。それとも何かを見失った結果なのか。
+    </div>
+
+    <p>そしてさらに調べるうちに気づいた。問題は「未完成」ということではない。土台そのものに、誰も問い直していない前提が置かれている。</p>
+  </div>
+
+  <!-- 相対論 -->
+  <div class="section" id="relativity">
+    <div class="section-label">論点 01</div>
+    <h2 class="section-title">相対性理論——光速不変の根拠を問う</h2>
+
+    <p>特殊相対性理論は、二つの原理の上に立っている。</p>
+
+    <p>一つは相対性原理。物理法則はどんな慣性系（等速直線運動をしている観測者）から見ても同じ形をしている、という原理だ。これはガリレオの時代から受け継がれた考え方であり、直感的に受け入れやすい。</p>
+
+    <p>もう一つが光速不変の原理。光の速度は、観測者の運動状態によらず常に一定である、というものだ。これが直感に反する。ボールを投げる人が走っていれば、ボールの速度は変わる。しかし光は違う、とアインシュタインは言った。</p>
+
+    <p>この二つの原理から、時間の遅れ、空間の収縮、E=mc²が導かれる。相対論の全ての帰結は、この土台の上にある。</p>
+
+    <p>では、この土台は確かなものか。</p>
+
+    <hr class="section-rule">
+
+    <p>光速不変の原理の根拠として、必ず挙げられる実験がある。1887年に行われたマイケルソン・モーリーの実験だ。</p>
+
+    <p>当時、光は「エーテル」と呼ばれる媒質を伝わると考えられていた。音が空気を伝わるように、光にも媒質が必要だと考えられていたのだ。そしてエーテルが存在するなら、地球がエーテルの中を動いている方向と、その逆方向では、光の速度が違うはずだ。</p>
+
+    <p>マイケルソンとモーリーはこれを精密な干渉計で測定しようとした。結果は否定的だった。方向による光速の差は検出されなかった。</p>
+
+    <p>この実験が示したのは、エーテルが存在しないか、少なくともエーテルによる光速の差が検出できないということだ。</p>
+
+    <div class="emphasis-block">
+      エーテルが存在しないことと、光速が誰に対しても不変であることは、同じ命題か。<br><br>
+      違う。エーテルがなければ、光速に影響を与える媒質がないというだけだ。そこから「あらゆる観測者に対して光速が同じ」という結論は導かれない。<br><br>
+      この飛躍は迂闊だ。そしてこの迂闊な一歩の上に、相対論の全体系が築かれている。
+    </div>
+
+    <hr class="section-rule">
+
+    <p>もちろん反論はある。マイケルソン・モーリー実験だけが根拠ではない、と。</p>
+
+    <p>連星パルサーの観測、ガンマ線バーストの測定、LIGOによる重力波の検出、GPSの精度——これらは全て相対論の正しさを示す証拠として挙げられる。確かにこれらの観測事実は存在する。そしてそれらは相対論の予測と一致している。</p>
+
+    <p>しかしここで冷静に問い直したい。</p>
+
+    <p>これらは相対論が正しいことを示しているのか。それとも、相対論という枠組みで解釈した結果と、観測が一致しているということなのか。</p>
+
+    <p>この二つは同じではない。</p>
+
+    <hr class="section-rule">
+
+    <p>同じ観測事実が、全く異なる理論を支えることがある。</p>
+
+    <p>天動説と地動説はその典型だ。人々が夜空を見上げ、星が動くのを観測した。その事実は一つだ。しかし天動説は「地球の周りを天体が回っている」と解釈し、地動説は「地球が太陽の周りを回っている」と解釈した。観測事実は同じでも、枠組みが違えば全く異なる結論になる。</p>
+
+    <p>そして重要なのはこれだ。天動説は長い間、観測事実と一致していた。惑星の動きを説明するために周転円という補正を重ねながら、それなりに機能していた。「観測と一致している」ことは、理論が正しいことの証明にはならなかった。</p>
+
+    <p>相対論を支持するとされる観測事実も同じだ。それらは相対論という枠組みで解釈された結果に過ぎない。別の枠組みで見れば、同じ事実から異なる結論が導かれる。しかしその可能性を、現代物理学は真剣に検討してこなかった。</p>
+
+    <p>なぜか。それは後で述べる「構造」の問題だ。</p>
+
+    <div class="emphasis-block">
+      光速不変の原理は、証明された事実ではない。観測と一致する解釈の一つだ。その迂闊な一歩の上に、相対論の全体系が築かれている。<br><br>
+      しかしこの誤謬の根は、相対論よりさらに古い理論に行き着く。電磁気学だ。
+    </div>
+  </div>
+
+  <!-- 電磁気学 -->
+  <div class="section" id="electromagnetism">
+    <div class="section-label">論点 02</div>
+    <h2 class="section-title">電磁気学——循環する土台</h2>
+
+    <p>相対論の話をしているのに、なぜ電磁気学が出てくるのか。</p>
+
+    <p>アインシュタインが光速不変の原理に至った背景には、マクスウェルの電磁気学がある。マクスウェル方程式は真空中の光速を定数として導出する。その定数が観測者によらず一定であるという発想が、光速不変の原理の出発点だ。つまり相対論の土台は、電磁気学の土台の上に立っている。</p>
+
+    <p>では電磁気学の土台は確かなものか。</p>
+
+    <p>現代物理学において、電磁気学は最も完成された理論の一つとされている。マクスウェル方程式は電磁気現象を美しく記述し、電磁波の存在を予言し、ヘルツがそれを実験で確認した。現代のあらゆる電気技術はこの理論の上に立っている。</p>
+
+    <p>しかし相対論と同様に、問わなければならないことがある。</p>
+
+    <p>その土台に、実験事実のない前提が置かれていないか。その方程式は、描像を持っているか。計算が現実と一致することと、方程式が自然を正しく描いていることは、別の話だ。</p>
+
+    <hr class="section-rule">
+
+    <p>ここで一つ、奇妙な事実がある。</p>
+
+    <p>電磁気学の理論体系は内部で整合的だ。電流はローレンツ力として距離と力で表せる。電荷はクーロン力として距離と力で表せる。美しく、強い制約を持った体系だ。</p>
+
+    <p>しかし電流は直接測れない。電荷量も直接測れない。では理論と現実はどこで繋がっているのか。</p>
+
+    <div class="emphasis-block">
+      繋がっているのは、光速度だけだ。<br><br>
+      電磁気学は現実を記述しているのではなく、光速度を基準にスケールを合わせた自己完結した数式体系だ。理論的に光速度を導いたのではなく、光速度を基準に理論の縮尺を決めているだけだ。
+    </div>
+
+    <p>そしてその光速度を「不変の原理」として採用したのが、相対論だ。</p>
+
+    <p>電磁気学と相対論は、光速度を介して循環している。一方が他方を支え、他方が一方を支える。その循環の外に出て検証した者は、いない。</p>
+
+    <p>電磁気学もまた、この問いに答えられない構造を持っている。そしてその誤謬は、さらに先へも受け継がれた。</p>
+  </div>
+
+  <!-- 量子力学 -->
+  <div class="section" id="quantum">
+    <div class="section-label">論点 03</div>
+    <h2 class="section-title">量子力学——解釈が乱立する理由</h2>
+
+    <p>電磁気学と相対論の循環を見た後で、量子力学を見ると、また別の景色が見えてくる。</p>
+
+    <p>量子力学は奇妙な理論だ。電子は観測するまで状態が確定しない。粒子は波でもある。二重スリット実験では、一個の電子が同時に二つのスリットを通り抜けたかのような干渉縞を作る。</p>
+
+    <p>この奇妙さをどう解釈するか。物理学者たちは長年議論してきた。コペンハーゲン解釈、多世界解釈、パイロット波理論——解釈は乱立し、今も決着していない。</p>
+
+    <p>ここで立ち止まって考えてほしい。</p>
+
+    <p>解釈が乱立しているということは何を意味するか。観測事実と理論の間に、埋めきれない溝があるということだ。計算は合う。しかし「なぜそうなるのか」は誰も説明できていない。</p>
+
+    <div class="emphasis-block">
+      そしてその溝の原因を辿ると、電磁気学に行き着く。電磁気学の前提を見直すと、二重スリット実験は全く別の顔を見せる。奇妙な解釈を必要としない描像が存在する。<br><br>
+      量子力学の混乱は、量子力学の中にあるのではない。根は、もっと深いところにある。
+    </div>
+  </div>
+
+  <!-- 誤謬の連鎖 -->
+  <div class="section" id="structure">
+    <div class="section-label">構造</div>
+    <h2 class="section-title">誤謬の連鎖——俯瞰</h2>
+
+    <p>ここまで三つの理論を見てきた。相対論、電磁気学、量子力学。それぞれに問題がある。しかしこれらは独立した三つの誤謬ではない。</p>
+
+    <p>根は一つだ。</p>
+
+    <p>電磁気学は光速度を基準にスケールを合わせた自己完結した数式体系だ。相対論は電磁気学が抱える問題に「光速不変」という特別な前提を置いて対処した。量子力学もまた、電磁気学では説明できない現象に対して「観測が現実を決める」という独自の哲学的前提を置いた。</p>
+
+    <p>根は同じだ。しかし対処の仕方がそれぞれ異なったため、三つの理論は互いに異なる哲学的前提を持つ、相容れない体系になった。</p>
+
+    <p>一つの誤謬が次の誤謬を生み、その誤謬がさらに次の誤謬を生んだ。そして各理論は互いに支え合い、循環する構造を作り上げた。外から見れば強固な体系に見える。しかし根を断てば、全体が揺らぐ。</p>
+
+    <hr class="section-rule">
+
+    <p>気づいている人間はいるはずだ。しかし誰も言わない。なぜか。</p>
+
+    <p>それは物理学が哲学を失ったからだ。描像を失い、数式だけが残った。計算が合うことが正しさの唯一の基準になった。「考えるな、計算しろ。」その結果、「なぜそうなるのか」を問う者は極めて少なくなった。</p>
+
+    <p>そして学術界の構造がそれを加速した。現代の学術界は査読システムによって成り立っている。論文は専門家による審査を経て初めて発表される。一見合理的に見える。しかしその審査者は、既存のパラダイムの中で訓練された人間だ。既存理論を根本から疑う論文は、審査の土俵にすら上がれない。</p>
+
+    <p>キャリアの問題もある。研究者は論文を書き、引用され、地位を築く。既存理論への異論は、その積み上げを一瞬で危うくする。若い研究者ほど逆らえない。逆らう動機がない。</p>
+
+    <p>専門分化も見逃せない。かつて物理学は自然哲学だった。ニュートンの主著は「自然哲学の数学的諸原理」という題を持つ。哲学と物理は一体であり、自然を描像として理解することと、数式で記述することは、同じ営みだった。</p>
+
+    <p>それがいつからか分断された。現代の物理学者は数式を扱うが描像を問わない。哲学者は概念を語るが数式を追わない。電磁気学の専門家は量子力学を深く疑わない。量子力学の専門家は電磁気学の土台を問い直さない。全体を俯瞰する者が極めて少なくなった。</p>
+
+    <p>「なぜそうなるのか」を問うためには、数式と描像の両方を持たなければならない。その両方を持つ者が、現代の学術界には居場所がない。</p>
+
+    <p>そして権威の問題がある。マクスウェル、アインシュタイン——これらの巨人への敬意は、批判的検討を阻む。敬意と盲信は違う。しかしシステムの中ではその境界が曖昧になる。</p>
+
+    <div class="emphasis-block">
+      誰かが意図してこの構造を作ったのではない。しかしこのシステムは、誤謬を誤謬のまま温存することに対して、極めて優秀に機能している。
+    </div>
+
+    <p>不思議なのはその巧妙さだ。各理論は互いの綻びを補い合い、学術界の構造はそれを守るように機能する。意図なく生まれたにしては、あまりにも精巧だ。陰謀論を信じるつもりはない。しかしこの構造の完成度は、時に芸術的とすら思える。</p>
+
+    <p>真実というものは、意図せずとも隠れるものなのかもしれない。</p>
+  </div>
+
+  <!-- 締め -->
+  <div class="section closing" id="closing">
+    <div class="section-label">おわりに</div>
+    <h2 class="section-title">だから私が言う</h2>
+
+    <p>現代物理学は巧妙な罠の中にある。誤謬が誤謬を生み、システムがそれを温存する。外から見れば強固な体系に見える。内側にいる者には罠だと気づきにくい。</p>
+
+    <p>しかし罠は罠だと気づいた瞬間に、半分は解けている。</p>
+
+    <p>土台を問い直すことは、全てを否定することではない。積み上げられた観測事実は本物だ。しかしその解釈は、唯一ではない。別の枠組みで見れば、同じ事実が全く異なる顔を見せる。天動説の時代にも、星は同じように輝いていた。</p>
+
+    <p>物理学は哲学を取り戻さなければならない。描像を取り戻さなければならない。計算が合うことと、自然を正しく描いていることは、別の話だ。</p>
+
+    <p>出口は存在する。</p>
+
+    <p>私はこれらの問題を解決する理論を構築している。本業の傍ら、趣味として、しかし真剣に。確認されている実験事実と整合する形而上のルールを見つけ、整理してきた。恐らく物理学が完成する。</p>
+
+    <p>論文として発表するつもりでいる。しかしそれには一つの懸念がある。安全保障だ。物理学の根幹を書き換える理論は、エネルギーや通信、あらゆる技術の基盤に触れる可能性がある。この期に及んで人類が戦争を繰り返しているという事実は、その懸念を現実のものにする。世界を解き明かす仕事が、世界を壊す道具になることは望まない。</p>
+
+    <p>だから今はまだ、ゆっくりと進める。世界を解き明かす仕事を、一人で静かに楽しみながら。</p>
+
+    <p>物理学に限った話ではない。世の中には、誰もが見ているのに誰も言わないことがある。システムがそう機能しているから。常識がそう機能しているから。</p>
+
+    <p>常識の外から考える人間は、一般的には変人だ。システムに収まらない発言は、奇異に映る。しかしより良い判断をするためには、変人であることは有利だ。常識の内側にいる限り、常識の綻びは見えない。</p>
+
+    <p class="closing-final">だから私は問い続ける。なぜ誰も言わないのか、と。</p>
+  </div>
+
+</div>
+
+<div class="article-nav">
+  <a href="../index.html" class="nav-back">← トップへ戻る</a>
+</div>
+
+<footer class="site-footer">
+  © なぜ誰も言わないのか　／　匿名著者による独立言論サイト
+</footer>
+
+</body>
+</html>
