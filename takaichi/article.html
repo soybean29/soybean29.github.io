@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>「積極財政」という忘却——誰もアベノミクスの結末を語らない｜なぜ誰も言わないのか</title>
+<meta name="description" content="アベノミクスという前例を総括しないまま、高市政権は「責任ある積極財政」を掲げる。日銀は金融政策の自由を失い、政府は財政の自由を失った。なぜ誰もそれを指摘しないのか。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-light: #444;
+    --ink-muted: #888;
+    --paper: #f7f4ef;
+    --paper-dark: #ede9e2;
+    --accent: #8b1a1a;
+    --rule: #c8bfb0;
+    --max: 860px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    line-height: 1.9;
+    min-height: 100vh;
+  }
+
+  .site-header {
+    border-bottom: 2px solid var(--ink);
+    padding: 1.2rem 2rem;
+    background: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-name {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .site-tagline {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* Article layout */
+  .article-wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 5rem 2rem 8rem;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards;
+  }
+
+  .article-eyebrow {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .article-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 120px;
+  }
+
+  .article-title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+    color: var(--ink);
+  }
+
+  .article-subtitle {
+    font-size: 1.05rem;
+    color: var(--ink-light);
+    border-left: 4px solid var(--accent);
+    padding-left: 1.2rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+
+  .article-meta {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--paper-dark);
+    border-left: 3px solid var(--accent);
+    padding: 1.5rem 1.8rem;
+    margin-bottom: 4rem;
+  }
+
+  .toc-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 0.8rem;
+  }
+
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+  }
+
+  .toc li {
+    counter-increment: toc;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    display: flex;
+    gap: 0.6rem;
+    align-items: baseline;
+  }
+
+  .toc li::before {
+    content: counter(toc, decimal-leading-zero);
+    font-size: 0.7rem;
+    color: var(--accent);
+    font-weight: 500;
+    min-width: 1.8rem;
+  }
+
+  .toc a {
+    color: var(--ink-light);
+    text-decoration: none;
+  }
+
+  .toc a:hover { color: var(--accent); }
+
+  /* Sections */
+  .section {
+    margin-bottom: 4rem;
+    padding-top: 1rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section-num {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    min-width: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+
+  .section p {
+    margin-bottom: 1.4rem;
+    color: var(--ink-light);
+  }
+
+  .section p:last-child { margin-bottom: 0; }
+
+  /* Emphasis block */
+  .emphasis {
+    background: var(--paper-dark);
+    border-left: 4px solid var(--accent);
+    padding: 1.2rem 1.5rem;
+    margin: 2rem 0;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--ink);
+  }
+
+  /* Trap boxes */
+  .trap-box {
+    border: 1px solid var(--rule);
+    padding: 1.5rem 1.8rem;
+    margin: 1.5rem 0;
+  }
+
+  .trap-label {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .trap-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: var(--ink);
+  }
+
+  .trap-body {
+    font-size: 0.93rem;
+    color: var(--ink-light);
+    line-height: 1.85;
+  }
+
+  /* Rebuttal block */
+  .rebuttal {
+    margin: 2.5rem 0;
+    border-top: 2px solid var(--ink);
+    padding-top: 1.5rem;
+  }
+
+  .rebuttal-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .rebuttal-item {
+    margin-bottom: 1.8rem;
+    padding-left: 1.2rem;
+    border-left: 2px solid var(--rule);
+  }
+
+  .rebuttal-claim {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  .rebuttal-answer {
+    font-size: 0.93rem;
+    color: var(--ink-light);
+    line-height: 1.85;
+  }
+
+  /* Closing questions */
+  .closing-questions {
+    margin: 3rem 0 0;
+    padding: 2rem;
+    border: 1px solid var(--ink);
+  }
+
+  .closing-q {
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.9;
+    margin-bottom: 1rem;
+    padding-left: 1.2rem;
+    border-left: 3px solid var(--accent);
+  }
+
+  .closing-q:last-of-type { margin-bottom: 0; }
+
+  /* Nav */
+  .article-nav {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-back {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.82rem;
+    color: var(--ink-light);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav-back:hover { color: var(--accent); }
+
+  .nav-series {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  .site-footer {
+    border-top: 1px solid var(--rule);
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 700px) {
+    .article-wrap { padding: 3rem 1.2rem 5rem; }
+    .site-tagline { display: none; }
+    .article-nav { flex-direction: column; align-items: flex-start; }
+    .nav-series { text-align: left; }
+  }
+</style>
+
+  <script data-goatcounter="https://soybean29.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+
+
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../index.html" class="site-name">なぜ誰も言わないのか</a>
+  <span class="site-tagline">見えていない構造を、言葉にする</span>
+</header>
+
+<div class="article-wrap">
+
+  <div class="article-eyebrow">シリーズ 04　経済・構造分析</div>
+
+  <h1 class="article-title">「積極財政」という忘却<br>——誰もアベノミクスの結末を語らない</h1>
+
+  <p class="article-subtitle">
+    アベノミクスという前例を総括しないまま、高市政権は「責任ある積極財政」を掲げる。日銀は金融政策の自由を失い、政府は財政の自由を失った。ルビコン川はすでに渡られた。なぜ誰もそれを指摘しないのか。
+  </p>
+
+  <div class="article-meta">
+    <span>2026年</span>
+    <span>シリーズ 04</span>
+    <span>経済・構造分析</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">目次</div>
+    <ol>
+      <li><a href="#s1">導入</a></li>
+      <li><a href="#s2">アベノミクスとは何だったか</a></li>
+      <li><a href="#s3">ルビコン川はすでに渡られた</a></li>
+      <li><a href="#s4">それでも「積極財政」と言える根拠はあるか</a></li>
+      <li><a href="#s5">「国内消化」という神話</a></li>
+      <li><a href="#s6">なぜ誰も言わないのか</a></li>
+      <li><a href="#s6b">もう一つの大本営発表</a></li>
+      <li><a href="#s7">結び</a></li>
+    </ol>
+  </nav>
+
+  <!-- 第1章 -->
+  <section class="section" id="s1">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">導入</h2>
+    </div>
+    <p>2025年10月、高市早苗内閣が発足した。掲げた旗印は「責任ある積極財政」。就任直後から矢継ぎ早に経済対策を打ち出し、2025年度補正予算は約18兆円、2026年度当初予算は史上最大の122兆円規模に達した。内閣支持率は一時76%を超え、政権への期待は高い。</p>
+    <p>数字だけ見れば、威勢がいい。</p>
+    <p>しかしここで、一つの問いを立てておきたい。</p>
+    <div class="emphasis">「責任ある」とは、誰の責任のことか。</div>
+    <p>政策が失敗したとき、誰が責任を取るのか。膨らんだ国債の利払いは、誰が負担するのか。補助金のコストは、最終的に誰に請求されるのか。「責任ある積極財政」という言葉は、責任の所在を曖昧にしたまま、威勢の良い印象だけを残す。本稿を読み進めるにあたって、この問いを頭の片隅に置いておいてほしい。</p>
+    <p>この「積極財政」という言葉を聞いて、奇妙な既視感を覚える人はどれほどいるだろうか。つい10年ほど前、この国は似たような旗印のもとで、空前絶後の「実験」を行った。異次元金融緩和——通称アベノミクスである。</p>
+    <p>その実験の後始末は、終わっていない。終わっていないどころか、後始末が可能な段階をすでに越えている、と筆者は見ている。</p>
+    <p>にもかかわらず、高市政権の「積極財政」を論じる声の中に、アベノミクスへの言及はほとんどない。メディアも、野党も、エコノミストも、まるでそんな歴史など存在しなかったかのように振る舞っている。</p>
+    <div class="emphasis">なぜ誰も言わないのか。</div>
+  </section>
+
+  <!-- 第2章 -->
+  <section class="section" id="s2">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">アベノミクスとは何だったか</h2>
+    </div>
+    <p>2013年、安倍晋三首相と日本銀行総裁に就任したばかりの黒田東彦は、「異次元の金融緩和」を宣言した。2%のインフレ目標を「2年で達成する」と断言し、市場に強烈なメッセージを送った。日銀は国債を大量に買い入れ、世の中にお金を溢れさせることで、デフレから脱却し、経済成長を取り戻す——それがシナリオだった。</p>
+    <p>結果を数字で見てみよう。</p>
+    <p>日銀の総資産は、緩和開始前の2012年末に約158兆円だったものが、黒田総裁退任直前の2023年には約736兆円へと膨らんだ。およそ4.7倍。GDPをも上回る規模である。これは主要国の中央銀行と比較しても、突出した数字だ。</p>
+    <p>では、これほどの「大実験」の成果はどうだったか。</p>
+    <p>物価は確かに上がった。しかしそれは、緩和政策による「良いインフレ」ではなく、円安と資源高が引き起こした輸入インフレが主因だった。実質賃金は上がらず、国民の生活実感は改善しなかった。そして最も重要な指標——潜在成長率は、緩和前後でほぼ変わらず、0.5〜0.7%程度に留まった。「成長」はとうとう来なかったのである。</p>
+    <p>さらに問題だったのは、出口戦略が最後まで語られなかったことだ。買い入れた国債をいつどうやって売るのか。膨らんだバランスシートをどう縮小するのか。誰も公式には答えを示さないまま、2023年に黒田総裁は退任し、アベノミクスは静かに幕を閉じた。</p>
+    <div class="emphasis">「実験は終わった」——しかし後片付けは、誰も手をつけていない。その請求書は、静かに積み上がっている。</div>
+  </section>
+
+  <!-- 第3章 -->
+  <section class="section" id="s3">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">ルビコン川はすでに渡られた</h2>
+    </div>
+    <p>「出口戦略を語らなかった」というのは、単なる説明不足ではない。語れなかったのだ。なぜなら、出口が存在しないからである。</p>
+    <p>構造的な罠は、三重になっている。</p>
+
+    <div class="trap-box">
+      <div class="trap-label">第一の罠</div>
+      <div class="trap-title">金利を上げれば、政府が危機に陥る</div>
+      <div class="trap-body">日本の国債残高は1000兆円を超えている。長期金利が1%上昇するだけで、数年以内に利払い費は数十兆円単位で膨らむ。ある試算では、金利が1%上昇した水準が10年続けば、利払い費の増加分だけで現在の消費税収がまるごと消える計算になる。日銀が金融正常化のために金利を引き上げようとすれば、政府の財政を直撃する。財政と金融政策が、互いの足を引っ張り合う構造がすでに出来上がっている。</div>
+    </div>
+
+    <div class="trap-box">
+      <div class="trap-label">第二の罠</div>
+      <div class="trap-title">金利を上げなければ、インフレを抑制できない</div>
+      <div class="trap-body">金利を据え置けば円安圧力が続き、輸入物価が上昇し、国民の生活を圧迫するインフレが止まらない。本来、インフレへの対処は金利を上げることだ。しかし第一の罠があるため、それが自由にできない。インフレが昂じてもブレーキを踏めない車に、私たちは乗っている。</div>
+    </div>
+
+    <div class="trap-box">
+      <div class="trap-label">第三の罠</div>
+      <div class="trap-title">ばらまいた日銀券は、回収できない</div>
+      <div class="trap-body">量的緩和で市場に供給されたマネーを吸収するには、日銀が保有する国債を売却する必要がある。しかし日銀が大量に国債を売れば、国債価格は下落し、金利は急上昇する。第一の罠に直結する。事実上、回収は不可能だ。</div>
+    </div>
+
+    <p>この三つの罠は、それぞれが独立した問題ではない。互いに連動し、どれか一つを解こうとすれば別の罠が締まる。黒田バズーカが撃たれた瞬間から、この構造は予見できた。そしてついに、引き返せない地点を越えた。</p>
+    <div class="emphasis">ルビコン川は、静かに、すでに渡られていたのである。そしてその請求書の宛名は、政治家でも日銀でもない。国民だ。</div>
+
+    <div class="rebuttal">
+      <div class="rebuttal-title">反論への応答</div>
+
+      <div class="rebuttal-item">
+        <div class="rebuttal-claim">「自国通貨建て国債だから破綻しない」</div>
+        <div class="rebuttal-answer">確かに、日本は円建てで国債を発行しており、技術的な意味でのデフォルトは起きにくい。しかしここで混同してはならないのは、「破綻しない」と「機能する」は全く別の話だということだ。円を刷り続ければインフレと円安が進行し、国民の購買力は静かに失われていく。国債が紙くずにならなくても、円が実質的に価値を失えば、結果は同じである。劇的な破綻という形を取らないだけで、緩やかな収奪が進む——それがより厄介なシナリオだ。</div>
+      </div>
+
+      <div class="rebuttal-item">
+        <div class="rebuttal-claim">「アベノミクスはデフレ脱却のための必要なコストだった」</div>
+        <div class="rebuttal-answer">デフレが止まったこと自体は事実だ。しかし最も重要な指標である潜在成長率は、緩和前後でほぼ変わらず0.5〜0.7%程度に留まった。劇薬を飲んだのに、病気は治らなかった。残ったのは副作用だけだった。そう評価せざるを得ない。</div>
+      </div>
+
+      <div class="rebuttal-item">
+        <div class="rebuttal-claim">「財政出動が足りなかっただけだ、もっと大胆にやれば成長が来る」</div>
+        <div class="rebuttal-answer">これが最も危うい論法だ。「効かなかった」→「足りなかった」→「もっとやれ」——この論理は構造的に反証不可能である。どれだけ実施しても効果が出なければ「まだ足りない」と言い続けられる。これはもはや経済政策の議論ではなく、信仰に近い。そして高市政権の「積極財政」は、その信仰の延長線上にある。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 第4章 -->
+  <section class="section" id="s4">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">それでも「積極財政」と言える根拠はあるか</h2>
+    </div>
+    <p>高市政権の経済論理を、一度公平に整理しておこう。</p>
+    <p>政権の主張はこうだ。日本経済は長年のデフレと低成長で疲弊しており、民間だけでは投資が生まれない。だから政府が先に投資し、半導体・エネルギー・防衛といった戦略分野に資金を集中させることで、成長の基盤を作る。財政は拡張するが、成長率が債務の増加ペースを上回れば、債務のGDP比は下がる——これが「責任ある積極財政」の論理だ。</p>
+    <p>一見、筋が通っているように見える。</p>
+    <p>しかし、この論理には決定的に欠けているものがある。アベノミクスへの言及が、ほぼ皆無なのだ。</p>
+    <p>考えてみれば異様なことだ。つい10年前、この国は「大胆な金融緩和」「機動的な財政出動」「民間投資を喚起する成長戦略」という三本の矢を掲げ、空前の規模で経済政策を実行した。成長の基盤を作るという目標も、政府主導の投資という手法も、今と驚くほど似ている。</p>
+    <p>その結果については、第2章で述べた通りだ。</p>
+    <p>にもかかわらず、高市政権はアベノミクスを総括しない。「あの実験から何を学んだか」を語らない。前政権との違いを説明しない。まるでアベノミクスという10年間が、日本の経済史から消えてしまったかのようだ。</p>
+    <p>これは単なる政治的配慮——安倍元首相への遠慮や自民党内の力学——だけでは説明がつかない。より根本的な問題として、総括してしまうと「積極財政」という旗印そのものが立てられなくなるからではないか。アベノミクスの失敗を認めることは、同じ論理で組み立てられた現在の政策の正当性を、自ら掘り崩すことになる。</p>
+    <div class="emphasis">沈黙は、意図的なのかもしれない。</div>
+    <p>もう一つ指摘しておきたいことがある。「成長率が債務の増加ペースを上回れば財政は健全化する」という論理は、成長が実現することを前提としている。しかし潜在成長率0.5〜0.7%という現実の前では、その前提はきわめて楽観的だ。しかも、その成長を生み出すはずだったアベノミクスは、10年かけて潜在成長率を動かせなかった。同じ論理の政策が、今度は違う結果をもたらすと考える根拠は、どこにあるのか。</p>
+    <p>政権はその問いに答えていない。そして誰もその問いを、大きな声でぶつけていない。</p>
+
+    <div class="rebuttal">
+      <div class="rebuttal-title">ブレーンの人選という問題</div>
+
+      <p style="font-size:0.93rem; color:var(--ink-light); line-height:1.85; margin-bottom:1.2rem;">政権の経済論理を理解するうえで、もう一つ見ておくべきことがある。誰がその論理を作っているか、だ。</p>
+
+      <p style="font-size:0.93rem; color:var(--ink-light); line-height:1.85; margin-bottom:1.2rem;">高市政権の経済政策の司令塔となる日本成長戦略本部には会田卓司氏と片岡剛士氏、経済財政諮問会議には若田部昌澄氏と永濱利廣氏が起用された。高橋洋一氏はメディア・SNSを通じた政権の論客として機能している。全員がいわゆるリフレ派であり、積極財政の推進論者だ。</p>
+
+      <p style="font-size:0.93rem; color:var(--ink-light); line-height:1.85; margin-bottom:1.2rem;">経済に詳しくない読者には、これが何を意味するかわかりにくいかもしれない。率直に言えば、この面々は主流の経済学の観点からは異質な存在だ。査読論文での学術的実績はほぼなく、IMFや国際決済銀行（BIS）といった国際機関の財政分析とも真っ向から相容れない主張を展開している。「国債費は膨らまし粉」「財政破綻はオバケ」——こうした言い切りは、財政制約を心理的錯覚として退けるものだが、主流マクロ経済学では支持されない論法だ。</p>
+
+      <p style="font-size:0.93rem; color:var(--ink-light); line-height:1.85; margin-bottom:1.2rem;">注目すべきはその人脈の連続性だ。この面々は安倍政権のリフレ派ブレーンとほぼ重なる。アベノミクスを設計し、推進し、その結果について総括をしていない人々が、そのまま高市政権の中枢に座っている。総括なき継承は、政策だけでなく人事にも貫かれている。</p>
+
+      <p style="font-size:0.93rem; color:var(--ink-light); line-height:1.85; margin-bottom:1.2rem;">なぜこの人選なのか。一つの解釈として、都合の良い結論——「積極財政は正しい」——を先に決め、それを支持する論客を集めた結果ではないかと考えられる。政権にとって必要なのは、アベノミクスの失敗を問わず、財政拡張を肯定し、批判者を「緊縮派」「財務省の犬」と退けてくれる声だ。そしてその役割を、この面々は忠実に果たしている。</p>
+
+      <p style="font-size:0.93rem; color:var(--ink-light); line-height:1.85;">学術的な主流から外れた論者が政権中枢に集められ、経済学的に異質な主張を、さも正当な政策論であるかのように発信し続ける。意図があるかどうかはわからない。しかし機能としては、これはプロパガンダだ。財政拡張を正当化し、批判を封じ、国民に「専門家もお墨付きを与えている」という印象を植え付ける。この構造自体が、「なぜ誰も言わないのか」という問いの一部をなしている。</p>
+    </div>
+  </section>
+
+  <!-- 第5章 -->
+  <section class="section" id="s5">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">「国内消化」という神話</h2>
+    </div>
+    <p>高市政権の積極財政を擁護する文脈で、必ずといっていいほど登場する論拠がある。「日本国債の95%以上は国内で消化されている。だから外国人投資家に売り浴びせられるギリシャのような危機は起きない」というものだ。</p>
+    <p>確かに事実として、日本国債の保有者の大半は国内の金融機関、生命保険会社、そして日銀である。外国人保有比率は低く、対外債務という意味での脆弱性は小さい。この点だけを見れば、安心材料に見える。</p>
+    <p>しかしこの論法には、致命的な盲点がある。</p>
+    <div class="emphasis">信用とは、制度ではなく心理だ。</div>
+    <p>ギリシャ危機は外国人投資家が逃げたから起きた。では日本の場合、誰が逃げるのか。答えは、日本国民自身だ。</p>
+    <p>国民が円と国債への信頼を失い始めたとき、何が起きるか。タンス預金が外貨や実物資産に向かう。銀行預金が海外口座に移る。企業が円建て資産を圧縮する。こうした動きは、外国人投資家の売りと同様に、あるいはそれ以上に、円と国債の価値を直撃する。「国内消化」は、国民が円を信じ続けることを暗黙の前提としている。その前提が崩れたとき、国内消化という盾は盾でなくなる。</p>
+    <p>では国民はいつまで信じ続けるのか。</p>
+    <p>現時点では、大多数の国民は円と国債を疑っていない。しかし信用とは、失われるときに突然失われるものだ。ゆっくりと侵食され、ある閾値を超えた瞬間に、堰を切ったように崩れる。その閾値がどこにあるかは、誰にもわからない。わからないこと自体が、リスクの本質だ。</p>
+    <p>歴史を振り返れば、「まさかこの国の通貨が」と思われていた国が、信用を失った例には事欠かない。例外なく、危機の直前まで「我が国は大丈夫」という論調が支配的だった。</p>
+    <p>国内消化という事実は、安心の根拠ではない。信用が続いている間だけ有効な、条件付きの安全弁に過ぎない。そしてその信用を支えているのは、制度でも法律でもなく、国民一人ひとりの「まだ大丈夫だろう」という心理だけだ。</p>
+    <div class="emphasis">その心理を、今の政権は試し続けている。信用が崩れたとき届く請求書の重さを、国民はまだ知らない。</div>
+  </section>
+
+  <!-- 第6章 -->
+  <section class="section" id="s6">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">なぜ誰も言わないのか</h2>
+    </div>
+    <p>ここまで述べてきたことは、特別な情報源を持つ者だけが知る秘密ではない。日銀のバランスシートは公開されている。国債残高も、利払い費の試算も、潜在成長率のデータも、すべて公開情報だ。経済の専門家であれば、誰でも同じ数字を見ている。</p>
+    <p>それでも、誰も大きな声で言わない。なぜか。</p>
+    <p><strong>メディアについて。</strong>支持率76%の政権を正面から批判することは難しい。国民が熱狂的に支持しているものに冷や水を浴びせれば、「空気を読めない」「庶民の苦しみを分かっていない」という反応が返ってくる。物価高で苦しむ国民に向けて給付や減税を約束する政権を批判することは、政治的に不人気だ。メディアは視聴率と購読者数で生きている。耳障りの悪い真実より、耳触りの良い希望を伝える方が、ビジネスとして合理的だ。</p>
+    <p><strong>野党について。</strong>財政規律を訴えることは、選挙で票を失う。「緊縮財政」というレッテルを貼られた瞬間に、議席が消える。かつて民主党政権が財政健全化を口にするたびに叩かれた記憶は、野党議員の骨身に染みている。積極財政を批判するより、「もっと配れ」と言う方が選挙戦略として正しい。こうして財政規律を語る政治家は、与野党問わず絶滅危惧種になっていく。</p>
+    <p><strong>経済学者・エコノミストについて。</strong>これが最も複雑だ。リフレ派と財政再建派の対立は、日本の経済論壇で長年続いてきた。財政再建派は警告を発してきたが、「アベノミクスで破綻しなかったではないか」という現実の前に、説得力を失ってきた一面がある。「狼が来る」と言い続けて狼が来なかった者の言葉は、軽く見られる。たとえその警告が本質的に正しくても。さらに、政府の審議会や研究機関に関わるエコノミストは、政策を根本から否定することが構造的にしにくい立場にある。</p>
+    <p><strong>そして国民について。</strong>物価が上がり、賃金が追いつかない生活の中で、「給付します」「減税します」という政権を支持することは、極めて合理的な個人の判断だ。目の前の苦しさを和らげてくれる政策を選ぶことを、誰も責められない。しかしその積み重ねが、より大きな問題を先送りし、膨らませていく。</p>
+    <p>2026年2月の衆院選は、この構造を可視化する選挙だった。自民党が大勝する中、与野党を問わずほぼすべての政党が減税・給付・財政出動を競い合った。財政の持続可能性を正面から訴えた政党は、事実上一つだけだった——チームみらいだ。その得票率はおよそ6.7%。新設政党としては決して低い数字ではない。むしろこれは、ポピュリズム一色の選挙戦の中で、現実を直視しようとした一部の有権者が確かに存在したことの証左だ。SNS上では得票率を不自然に低く見せようとする陰謀論的な論調も見られたが、それ自体、この数字が既存の政治勢力にとって無視できない脅威として映ったことを示唆している。</p>
+    <p>しかし同時に、残り約93%の票は財政問題を争点にしない政党に流れた。現実を直視する声は確かにあった——ただ、まだ少数だ。</p>
+    <p>全員が合理的に行動した結果として、誰も言わない状況が出来上がる。これは陰謀でも、意図的な隠蔽でもない。もっと厄介な構造だ。誰かが悪意を持って真実を封じているのではなく、それぞれの立場で合理的に判断した結果として、社会全体が目を背け続けている。</p>
+  </section>
+
+  <!-- 第6章（新） -->
+  <section class="section" id="s6b">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title">もう一つの大本営発表</h2>
+    </div>
+    <p>財政の話をここまで述べてきた。しかし今、まったく同じ構造がエネルギー問題でも起きている。</p>
+    <p>2026年2月、イスラエルおよび米国によるイラン攻撃を契機に中東情勢が急激に緊迫化した。ホルムズ海峡の事実上の封鎖により、タンカーが通れない状況が続いている。日本にとってこれは対岸の火事ではない。日本の原油輸入の中東依存度は9割を超える。構造的に、代替はきかない。</p>
+    <p>政府の対応は素早かった。備蓄を放出し、ガソリン価格を1リットル170円程度に抑制する補助金を投入した。「安定供給に支障はない」と繰り返した。</p>
+    <p>しかしその言葉の裏で、何が起きているか。</p>
+    <p>ナフサ——石油化学製品の原料となる石油の中間留分——の不足が現場を直撃しはじめている。プラスチック、合成繊維、肥料、医薬品。日常生活と産業基盤を支える無数の製品がナフサを原料とする。その供給が細りはじめているにもかかわらず、政府の説明は「流通の目詰まり」という言葉で覆われている。需要側が過剰発注しているせいだ、と。</p>
+    <div class="emphasis">「目詰まり」。供給が足りているのに流通が混乱しているだけだ、という説明だ。しかしその説明を額面通りに受け取れる人間が、現場にどれだけいるだろうか。</div>
+    <p>通貨の信認というものは、平時においては驚くほど強固だ。日本はこれまで、世界に類を見ない国債残高を抱えながらも、円への信頼を保ち続けてきた。財政悪化を警告する声は何度も上がったが、そのたびに「それでも円は大丈夫だった」という現実がその声を封じてきた。</p>
+    <p>しかし、その信認には一つの前提がある。通貨でモノが買えること、だ。</p>
+    <p>モノが消えたとき、その前提は崩れる。いくら円を持っていても、店頭に商品がなければ、円の価値は実感として失われる。その瞬間、人々は円を手放し始める。戦後の激しいインフレも、本質的にはモノ不足が引き金だった。刷られた円に見合うモノが存在しなかったとき、円の価値は一気に溶けた。</p>
+    <p>今、ナフサが足りない。製品が消えはじめている。その現実の中で、政府は補助金を投じ、価格を抑え、「モノはある、問題ない」と強弁し続けている。</p>
+    <p>これは諸刃の剣だ。補助金による価格統制は、確かに国民生活を短期的に守る。しかし同時に、危機の実態を覆い隠す。価格というシグナルが歪められることで、国民は需給の逼迫を実感できない。危機感が麻痺したまま、備蓄だけが静かに減り続ける。</p>
+    <p>そして備蓄が尽きたとき、あるいは「実はずっと足りていなかった」という事実が露わになったとき——抑え込まれていた不安が一気に解放される。信認の崩壊は、ゆっくりとは来ない。突然来る。</p>
+    <p>ここで一つの歴史的な光景が重なる。太平洋戦争末期、大本営は連戦連敗を「転進」と呼んだ。撤退を「転進」、全滅を「玉砕」と言い換え、国民に真実を伝えなかった。同時に戦時国債を乱発し、国民の資産を戦費に充てた。そして敗戦とともに、国債は紙屑になり、激しいインフレが国民の残った資産をも溶かした。</p>
+    <p>構造が、似ている。備蓄を食い潰しながら「問題ない」と言い続ける。補助金で価格を抑えて危機感を麻痺させる。現場の悲鳴を「目詰まり」という言葉で矮小化する。そして財政は、その補助金のために赤字国債をさらに積み上げる。エネルギー危機と財政危機が、互いを悪化させながら進行している。どちらも「問題ない」という言葉で包まれたまま。</p>
+    <div class="emphasis">政府が国民を守ろうとしているのか、それとも騙しているのか。あるいはその両方なのか。答えは、結末が教えてくれるだろう。</div>
+  </section>
+
+  <!-- 第7章 -->
+  <section class="section" id="s7">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2 class="section-title">結び</h2>
+    </div>
+    <p>本稿で述べてきたことを、一度整理しておこう。</p>
+    <p>日銀は金融政策の自由を失い、政府は財政の自由を失った。アベノミクスという前例を総括しないまま、同じ論理で「積極財政」が掲げられている。国債残高は膨らみ続け、金利を上げれば財政が危機に陥り、上げなければインフレを抑制できない。「国内消化だから安全だ」という論拠は、国民が信用をやめた瞬間に崩れる。そこへ今、エネルギー危機が重なった。モノが消えはじめているにもかかわらず、政府は「問題ない」と言い続け、補助金で価格を抑え、備蓄を食い潰している。</p>
+    <p>これだけの問題が重なっているにもかかわらず、誰も大きな声で言わない。メディアも、野党も、エコノミストも、そして国民も——それぞれの立場で合理的に行動した結果として、社会全体が目を背け続けている。</p>
+    <p>筆者はこの構造を、別稿で<strong>「悪魔の見えざる手」</strong>と呼んだ。アダム・スミスの「神の見えざる手」が、個々人の利己的行動の総和として社会全体の利益を生み出すのとは逆に——個々人が合理的に行動した結果として、誰も意図せず、社会全体が破滅的な方向へ歩み続ける構造のことだ。</p>
+    <p>今の日本は、その典型に見える。</p>
+    <p>かつて大本営発表が終わったとき、国民は初めて現実を知った。戦時国債は紙屑になり、モノ不足が引き金となった激しいインフレが、国民の残った資産を溶かした。あの経験から80年が経った。当事者はほぼいなくなった。そして私たちは、似た構造を、別の名前で繰り返しているように見える。</p>
+
+    <div class="closing-questions">
+      <p class="closing-q">「国内消化だから安全だ」と言う人々に問う——国民が信用をやめた日、あなたはどこにいるのか。</p>
+      <p class="closing-q">補助金で価格を抑え「モノはある」と言い続ける政府に問う——備蓄が尽きた日、あなたは何と言うのか。</p>
+    </div>
+
+    <p style="margin-top: 2rem;">その日が来ないことを、筆者も願っている。しかし願いは、政策ではない。そして歴史は、願いで止まったためしがない。</p>
+  </section>
+
+  <nav class="article-nav">
+    <a href="../index.html" class="nav-back">← トップページに戻る</a>
+    <div class="nav-series">
+      シリーズ 04　経済・構造分析<br>
+      「積極財政」という忘却
+    </div>
+  </nav>
+
+</div>
+
+<footer class="site-footer">
+  © なぜ誰も言わないのか　／　匿名著者による独立言論サイト
+</footer>
+
+</body>
+</html>
